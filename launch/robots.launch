@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+  <!-- We resume the logic in empty_world.launch, changing the name of the world to be launched -->
+  <include file="$(find baxter_gazebo)/launch/baxter_world.launch"/>
+
+  <!-- Start the Baxter truck_arms -->
+  <node pkg="baxter_sim_examples" type="posicion_inic.py" name="posicion_inic" />
+
+  <!-- spawn the mesa in gazebo -->
+  <node name="spawn_cafe_table" pkg="gazebo_ros" type="spawn_model" args="-file $(find baxter_sim_examples)/models/cafe_table/model.sdf -sdf -model cafe_table -y -0.8 -x 0.0 -z 0.0 "/>
+
+  <!-- spawn the banda_right in gazebo -->
+  <node name="spawn_banda_rigth" pkg="gazebo_ros" type="spawn_model" args="-file $(find baxter_sim_examples)/models/banda_rigth/model.sdf -sdf -model banda_rigth -y 1.65 -x -0.35 -z 0.8 "/>
+
+  <!-- spawn the banda_left in gazebo -->
+  <node name="spawn_banda_left" pkg="gazebo_ros" type="spawn_model" args="-file $(find baxter_sim_examples)/models/banda_left/model.sdf -sdf -model banda_left -y 1.65 -x 0.27 -z 0.8 "/>
+
+</launch>
+

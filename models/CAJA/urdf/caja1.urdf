@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="caja1">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.15186 -0.065087 0.083197"
+        rpy="0 0 0" />
+      <mass
+        value="34.992" />
+      <inertia
+        ixx="2.3919"
+        ixy="4.4739E-16"
+        ixz="-1.5436E-15"
+        iyy="3.8961"
+        iyz="-0.13742"
+        izz="2.2654" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://caja1/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://caja1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+
+<robot name="robot_2" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    
+  <!-- Include the Xacro files -->
+  <!--xacro:include filename="$(find baxter_sim_examples)/models/sensor_banda_2/materials.xacro" /-->  
+  <xacro:include filename="$(find baxter_sim_examples)/models/sensor_banda_2/gazebo.xacro" />
+  <xacro:include filename="$(find baxter_sim_examples)/models/sensor_banda_2/macro.xacro" />
+    
+  <!-- chassis definition -->
+  <link name="link_chassis">
+    <!-- pose and inertial -->
+    <pose>0 0 0 0 0 0</pose>
+    
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <xacro:base_inertia mass="5" x1="0.49" y1="1.7" z1="0.0005" />
+    </inertial>
+    
+    <collision name="collision_chassis">
+      <geometry>
+        <box size="0.49 1.7 0.0005"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.49 1.7 0.0005"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <!-- Link for laser -->
+  <link name="sensor_laser">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="4" />
+      <xacro:cylinder_inertia mass="1" r="0.05" l="0.1" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.01" length="0.03"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 255 0.3"/>
+      </material>
+      <material name="laserLight">
+        <lighting>1</lighting>
+        <ambient>0.3 0.3 0.3 1</ambient>
+        <diffuse>0.7 0.7 0.7 1</diffuse>
+        <specular>0.01 0.01 0.01 1</specular>
+        <emissive>0 0 0 1</emissive>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.03"/>
+      </geometry>
+      <material name="collisionLaser">
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+      </material>
+    </collision>
+  </link>
+
+  <!-- Joint for laser -->
+  <joint name="joint_sensor_laser" type="fixed">
+    <origin xyz="-0.04 -0.82 0.015" rpy="0 0 1.57"/>
+    <parent link="link_chassis"/>
+    <child link="sensor_laser"/>
+  </joint>
+  
+</robot>

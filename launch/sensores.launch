@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+  <param name="robot_description_1" command="$(find xacro)/xacro --inorder '$(find baxter_sim_examples)/models/sensor_banda_1/robot.xacro'" />
+
+  <arg name="x" default="-0.232"/>
+  <arg name="y" default="1.613"/>
+  <arg name="z" default="0.81"/>
+
+  <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description_1 -model robot_1 -x $(arg x) -y $(arg y) -z $(arg z)" />
+
+  <param name="robot_description_2" command="$(find xacro)/xacro --inorder '$(find baxter_sim_examples)/models/sensor_banda_2/robot.xacro'" />
+
+  <arg name="x1" default="0.39"/>
+  <arg name="y1" default="1.613"/>
+  <arg name="z1" default="0.81"/>
+
+  <node name="mybot_spawn_1" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description_2 -model robot_2 -x $(arg x1) -y $(arg y1) -z $(arg z1)" />
+
+  <!-- spawn the Caja 1 in gazebo -->
+  <node name="spawn_box_right" pkg="gazebo_ros" type="spawn_model" args="-file $(find baxter_sim_examples)/models/box_right/model.sdf -sdf -model box_right -y -0.72 -x -0.28 -z 0.853 "/>
+
+  <!-- spawn the Caja 2 in gazebo -->
+  <node name="spawn_box_ball" pkg="gazebo_ros" type="spawn_model" args="-file $(find baxter_sim_examples)/models/box_ball/model.sdf -sdf -model box_ball -y -0.72 -x 0.27 -z 0.853 "/>
+
+  <!-- spawn the Caja 3 in gazebo -->
+  <node name="spawn_box_left" pkg="gazebo_ros" type="spawn_model" args="-file $(find baxter_sim_examples)/models/box_left/model.sdf -sdf -model box_left -y -0.72 -x -0.01 -z 0.853 "/>
+
+</launch>
+
